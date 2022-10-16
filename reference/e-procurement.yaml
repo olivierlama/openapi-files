@@ -37,7 +37,28 @@ components:
       x-stoplight:
         id: 87z6sz5xl6la4
       type: object
-      x-examples: {}
+      x-examples:
+        example-1:
+          id: BMS005
+          name: 2 Chainwheels
+          category:
+            id: BMSOL
+            description: Purchased/Manufactured/Sold
+            bought: 'yes'
+            sold: 'no'
+          type: stockManagement
+          sealesPrice: 0
+          salesTax: 20% (Bien)
+          cost: 0
+          purchasings:
+            - idSupplier: Cycleurope
+              productSupplier: CYCBMS005
+              quantity: 1000
+              price: 5
+            - idSupplier: OnicIndus
+              productSupplier: ONIBMS005
+              quantity: 2000
+              price: 4.5
       properties:
         id:
           type: string
@@ -60,3 +81,34 @@ components:
             - 0% EXO (Service)
         cost:
           type: number
+        purchasings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPurchasing'
+        name:
+          type: string
+    ProductPurchasing:
+      title: ProductPurchasing
+      x-stoplight:
+        id: upea12mxzivzs
+      type: object
+      properties:
+        idSupplier:
+          type: string
+        productSupplier:
+          type: string
+        quantity:
+          type: number
+        price:
+          type: number
+      x-examples:
+        example-1:
+          idSupplier: Cycleurope
+          productSupplier: CYCBMS005
+          quantity: 1000
+          price: 5
+        example-2:
+          idSupplier: OnicIndus
+          productSupplier: ONIBMS005
+          quantity: 2000
+          price: 4.5
