@@ -1,12 +1,19 @@
 openapi: 3.0.0
+tags:
+  - name: products
+    description: Products
 x-stoplight:
   id: 80o1yi82d2urj
 info:
   title: e-procurement
   version: '1.0'
+  contact:
+    name: Sage
+  description: |
+    # Sample e-procurment
+    - Products
 servers:
   - url: 'http://localhost:3000'
-paths: {}
 components:
   schemas:
     ProductCategory:
@@ -45,11 +52,11 @@ components:
             id: BMSOL
             description: Purchased/Manufactured/Sold
             bought: 'yes'
-            sold: 'no'
+            sold: 'yes'
           type: stockManagement
-          sealesPrice: 0
+          sealesPrice: 100
           salesTax: 20% (Bien)
-          cost: 0
+          cost: 10
           purchasings:
             - idSupplier: Cycleurope
               productSupplier: CYCBMS005
@@ -59,8 +66,11 @@ components:
               productSupplier: ONIBMS005
               quantity: 2000
               price: 4.5
+      description: ''
       properties:
         id:
+          type: string
+        name:
           type: string
         category:
           $ref: '#/components/schemas/ProductCategory'
@@ -85,8 +95,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ProductPurchasing'
-        name:
-          type: string
     ProductPurchasing:
       title: ProductPurchasing
       x-stoplight:
@@ -112,3 +120,44 @@ components:
           productSupplier: ONIBMS005
           quantity: 2000
           price: 4.5
+  examples: {}
+paths:
+  /products:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - products
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              examples:
+                example-1:
+                  value:
+                    - id: BMS005
+                      name: 2 Chainwheels
+                      category:
+                        id: BMSOL
+                        description: Purchased/Manufactured/Sold
+                        bought: 'yes'
+                        sold: 'yes'
+                      type: stockManagement
+                      sealesPrice: 100
+                      salesTax: 20% (Bien)
+                      cost: 10
+                      purchasings:
+                        - idSupplier: Cycleurope
+                          productSupplier: CYCBMS005
+                          quantity: 1000
+                          price: 5
+                        - idSupplier: OnicIndus
+                          productSupplier: ONIBMS005
+                          quantity: 2000
+                          price: 4.5
+      operationId: get-products
+      description: List of products
