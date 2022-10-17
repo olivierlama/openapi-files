@@ -104,48 +104,64 @@ components:
   examples:
     product1:
       value:
-        id: BMS005
-        name: 2 Chainwheels
-        category:
-          id: BMSOL
-          description: Purchased/Manufactured/Sold
-          bought: 'yes'
-          sold: 'yes'
-        type: stockManagement
-        sealesPrice: 100
-        salesTax: 20% (Bien)
-        cost: 10
-        purchasings:
-          - idSupplier: Cycleurope
-            productSupplier: CYCBMS005
-            quantity: 1000
-            price: 5
-          - idSupplier: OnicIndus
-            productSupplier: ONIBMS005
-            quantity: 2000
-            price: 4.5
+        {
+          "id": "BMS005",
+          "name": "2 Chainwheels",
+          "category": {
+           "id": "BMSOL",
+           "description": "Purchased/Manufactured/Sold",
+           "bought": 'yes',
+           "sold": 'yes'
+          }, 
+          "type": "stockManagement",
+          "sealesPrice": 100,
+          "salesTax": "20% (Bien)",
+          "cost": 10,
+          "purchasings": [
+            {
+            "idSupplier": "Cycleurope",
+            "productSupplier": "CYCBMS005",
+            "quantity": 1000,
+            "price": 5
+            },
+            {
+            "idSupplier": "OnicIndus",
+            "productSupplier": "ONIBMS005",
+            "quantity": 2000,
+            "price": 4.5
+            }
+          ]
+        }  
     product2:
       value:
-        id: BMS005BIS
-        name: 2 Chainwheels
-        category:
-          id: BMSOL
-          description: Purchased/Manufactured/Sold
-          bought: 'yes'
-          sold: 'yes'
-        type: stockManagement
-        sealesPrice: 100
-        salesTax: 20% (Bien)
-        cost: 10
-        purchasings:
-          - idSupplier: Cycleurope
-            productSupplier: CYCBMS005
-            quantity: 1000
-            price: 5
-          - idSupplier: OnicIndus
-            productSupplier: ONIBMS005
-            quantity: 2000
-            price: 4.5
+       {
+          "id": "BMS005BIS",
+          "name": "2 Chainwheels",
+          "category": {
+           "id": "BMSOL",
+           "description": "Purchased/Manufactured/Sold",
+           "bought": 'yes',
+           "sold": 'yes'
+          }, 
+          "type": "stockManagement",
+          "sealesPrice": 100,
+          "salesTax": "20% (Bien)",
+          "cost": 10,
+          "purchasings": [
+            {
+            "idSupplier": "Cycleurope",
+            "productSupplier": "CYCBMS005",
+            "quantity": 1000,
+            "price": 5
+            },
+            {
+            "idSupplier": "OnicIndus",
+            "productSupplier": "ONIBMS005",
+            "quantity": 2000,
+            "price": 4.5
+            }
+          ]
+        }  
 paths:
   /products:
     get:
