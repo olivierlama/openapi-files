@@ -6,14 +6,14 @@ x-stoplight:
   id: 80o1yi82d2urj
 info:
   title: e-procurement
-  version: "1.0"
+  version: '1.0'
   contact:
     name: Sage
   description: |
     # Sample e-procurment
     - Products
 servers:
-  - url: "http://localhost:3000"
+  - url: 'http://localhost:3000'
 components:
   schemas:
     ProductCategory:
@@ -26,19 +26,19 @@ components:
         bought:
           type: string
           enum:
-            - "no"
-            - "yes"
+            - 'no'
+            - 'yes'
         sold:
           type: string
           enum:
-            - "no"
-            - "yes"
+            - 'no'
+            - 'yes'
       x-examples:
         example-1:
           id: BMSOL
           description: Purchased/Manufactured/Sold
-          bought: "yes"
-          sold: "no"
+          bought: 'yes'
+          sold: 'no'
     Product:
       title: Product
       x-stoplight:
@@ -46,15 +46,15 @@ components:
       type: object
       x-examples:
         example-1:
-          $ref: "#/components/examples/product1"
-      description: ""
+          $ref: '#/components/examples/product1'
+      description: ''
       properties:
         id:
           type: string
         name:
           type: string
         category:
-          $ref: "#/components/schemas/ProductCategory"
+          $ref: '#/components/schemas/ProductCategory'
         type:
           type: string
           enum:
@@ -75,7 +75,7 @@ components:
         purchasings:
           type: array
           items:
-            $ref: "#/components/schemas/ProductPurchasing"
+            $ref: '#/components/schemas/ProductPurchasing'
     ProductPurchasing:
       title: ProductPurchasing
       x-stoplight:
@@ -109,8 +109,8 @@ components:
         category:
           id: BMSOL
           description: Purchased/Manufactured/Sold
-          bought: "yes"
-          sold: "yes"
+          bought: 'yes'
+          sold: 'yes'
         type: stockManagement
         sealesPrice: 100
         salesTax: 20% (Bien)
@@ -131,8 +131,8 @@ components:
         category:
           id: BMSOL
           description: Purchased/Manufactured/Sold
-          bought: "yes"
-          sold: "yes"
+          bought: 'yes'
+          sold: 'yes'
         type: stockManagement
         sealesPrice: 100
         salesTax: 20% (Bien)
@@ -146,14 +146,6 @@ components:
             productSupplier: ONIBMS005
             quantity: 2000
             price: 4.5
-    products1:
-      value:
-        description: Example shared example
-        allOf:
-          type: array
-          items:
-            - $ref: "#/components/examples/product1"
-            - $ref: "#/components/examples/product2"
 paths:
   /products:
     get:
@@ -161,16 +153,18 @@ paths:
       tags:
         - products
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Product"
+                  $ref: '#/components/schemas/Product'
               examples:
                 example-1:
-                  $ref: "#/components/examples/products1"
+                  value:
+                    - $ref: '#/components/examples/product1'
+                    - $ref: '#/components/examples/product2'
       operationId: get-products
       description: List of products
